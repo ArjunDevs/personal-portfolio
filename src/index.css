@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+
+/* Inter — opsz, wght */
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* JetBrains Mono — wght */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./assets/fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./assets/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Doto — ROND, wght */
+@font-face {
+  font-family: "Doto";
+  src: url("./assets/fonts/Doto-VariableFont_ROND,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bitcount Prop Double Ink — many axes incl. slnt, wght */
+@font-face {
+  font-family: "Bitcount Prop Double Ink";
+  src: url("./assets/fonts/BitcountPropDoubleInk-VariableFont_CRSV,ELSH,ELXP,SZP1,SZP2,XPN1,XPN2,YPN1,YPN2,slnt,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: oblique -10deg 0deg;
+  font-display: swap;
+}
+
+/* Humane — VF */
+@font-face {
+  font-family: "Humane";
+  src: url("./assets/fonts/Humane-VF.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* Instrument Serif */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("./assets/fonts/InstrumentSerif-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("./assets/fonts/InstrumentSerif-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Monsieur La Doulaise */
+@font-face {
+  font-family: "Monsieur La Doulaise";
+  src: url("./assets/fonts/MonsieurLaDoulaise-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Parisienne */
+@font-face {
+  font-family: "Parisienne";
+  src: url("./assets/fonts/Parisienne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Supreme — full static family (Thin 100 → Extrabold 800) */
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Extralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-ExtralightItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-Extrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Supreme";
+  src: url("./assets/fonts/Supreme-ExtraboldItalic.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@theme {
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-jetbrains: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-instrument: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-supreme: "Supreme", "Inter", sans-serif;
+  --font-humane: "Humane", "Inter", sans-serif;
+  --font-pixel: "Bitcount Prop Double Ink", "JetBrains Mono", monospace;
+  --font-dotted: "Doto", "JetBrains Mono", monospace;
+  --font-script: "Parisienne", cursive;
+  --font-script-fancy: "Monsieur La Doulaise", cursive;
+
+  --animate-breathe: breathe 1.2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
