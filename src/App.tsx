@@ -52,12 +52,22 @@ function App() {
   const handleLoaderComplete = useCallback(() => setLoading(false), []);
 
   return (
-    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
+    <ReactLenis
+      root
+      options={{
+        autoRaf: false,
+        // Route same-page hash links (the navbar) through Lenis's smooth
+        // scrollTo instead of the browser's instant jump.
+        anchors: { offset: 0, duration: 1.2 },
+      }}
+      ref={lenisRef}
+    >
       <div className="w-screen">
         <Hero />
         <About />
         <Experience />
         <PersonalProjects />
+        <div className="p-20 bg-black"/>
         <Contact />
       </div>
       {loading && <Loader onComplete={handleLoaderComplete} />}

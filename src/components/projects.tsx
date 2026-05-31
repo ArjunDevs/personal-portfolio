@@ -1,8 +1,8 @@
 import { useRef } from "react";
 
-import { ScrollGallery } from "./scroll-gallery";
+import Stack from "./reactbits/stack";
 import { useHeaderReveal, useTileReveal } from "../lib/reveal";
-import { Meta, RichText, Stamp } from "./dossier";
+import { RichText, Stamp } from "./dossier";
 
 import shotLanding   from "../assets/projects/synclabs/Screenshot 2026-05-24 235343.png";
 import shotDashboard from "../assets/projects/synclabs/Screenshot 2026-05-24 235248.png";
@@ -18,8 +18,6 @@ type PersonalProject = {
     noteBg: string;
     status: ProjectStatus;
     statusLabel: string;
-    builtIn: string;
-    category: string;
     title: string;
     tagline: string;
     itch: string;
@@ -53,8 +51,6 @@ const PROJECTS: PersonalProject[] = [
         noteBg: "001",
         status: "shipped",
         statusLabel: "✓ Shipped",
-        builtIn: "2024",
-        category: "Realtime · Collab",
         title: "SyncLabs",
         tagline: "Realtime collaborative code editor",
         itch:
@@ -88,7 +84,7 @@ export function PersonalProjects() {
             id="projects"
             className="relative w-full bg-black text-white"
         >
-            <div className="mx-auto flex w-full max-w-6xl flex-col px-8 pt-28 pb-10 md:pt-32 md:pb-12 lg:pt-40">
+            <div className="mx-auto flex w-full max-w-6xl flex-col px-8 pt-24 pb-8 md:pt-28 md:pb-10">
                 <div ref={headerRef} className="max-w-3xl">
                     <div
                         data-anim
@@ -141,17 +137,7 @@ function FieldNoteTile({ project, index }: { project: PersonalProject; index: nu
                 </span>
             </div>
 
-            <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-8 py-16 md:gap-16 md:py-20 lg:gap-20 lg:py-24">
-                <div
-                    data-tile-block
-                    className="grid grid-cols-2 items-start gap-y-3 font-jetbrains text-[10px] uppercase tracking-[0.25em] text-white/50 md:grid-cols-4"
-                >
-                    <Meta label="Note" value={project.noteNo} />
-                    <Meta label="Built In" value={project.builtIn} />
-                    <Meta label="Status" value={project.statusLabel} />
-                    <Meta label="Category" value={project.category} />
-                </div>
-
+            <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-8 py-12 md:gap-10 md:py-16">
                 <div
                     data-tile-block
                     className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
@@ -164,7 +150,7 @@ function FieldNoteTile({ project, index }: { project: PersonalProject; index: nu
                             <div className="font-supreme text-3xl font-bold leading-none md:text-5xl">
                                 {project.title}
                             </div>
-                            <div className="font-supreme text-xl italic text-white/60 md:text-2xl">
+                            <div className="font-supreme text-xl text-white/60 md:text-2xl">
                                 {project.tagline}
                             </div>
                         </div>
@@ -178,6 +164,37 @@ function FieldNoteTile({ project, index }: { project: PersonalProject; index: nu
                     />
                 </div>
 
+                {project.media && project.media.length > 0 && (
+                    project.media.length === 1 ? (
+                        <MediaCell media={project.media[0]} title={project.title} eager />
+                    ) : (
+                        <div data-tile-block className="flex flex-col items-center gap-3 py-2">
+                            <div className="relative aspect-16/10 w-full max-w-150">
+                                <Stack
+                                    sendToBackOnClick
+                                    autoplay
+                                    autoplayDelay={4000}
+                                    pauseOnHover
+                                    cardClassName="rounded-none border-4 border-white bg-black"
+                                    cards={project.media.map((m, i) => (
+                                        <img
+                                            key={i}
+                                            src={m.src}
+                                            alt={m.alt ?? project.title}
+                                            loading="lazy"
+                                            decoding="async"
+                                            className="pointer-events-none h-full w-full object-contain"
+                                        />
+                                    ))}
+                                />
+                            </div>
+                            <div className="font-jetbrains text-[10px] uppercase tracking-[0.3em] text-white/35">
+                                Click to flip through · {String(project.media.length).padStart(2, "0")} frames
+                            </div>
+                        </div>
+                    )
+                )}
+
                 <div data-tile-block className="flex flex-col gap-3">
                     <div className="font-jetbrains text-[10px] uppercase tracking-[0.3em] text-white/40">
                         The Itch
@@ -186,27 +203,6 @@ function FieldNoteTile({ project, index }: { project: PersonalProject; index: nu
                         <RichText text={project.itch} />
                     </p>
                 </div>
-
-                {project.media && project.media.length > 0 && (
-                    project.media.length === 1 ? (
-                        <div data-tile-block className="flex flex-col gap-3">
-                            <div className="font-jetbrains text-[10px] uppercase tracking-[0.3em] text-white/40">
-                                Glimpses
-                            </div>
-                            <MediaCell media={project.media[0]} title={project.title} eager />
-                        </div>
-                    ) : (
-                        <ScrollGallery
-                            shots={project.media
-                                .filter((m) => m.type === "image")
-                                .map((m) => ({
-                                    src: m.src,
-                                    caption: m.caption ?? "",
-                                    alt: m.alt ?? project.title,
-                                }))}
-                        />
-                    )
-                )}
 
                 <div data-tile-block className="flex flex-col gap-3">
                     <div className="font-jetbrains text-[10px] uppercase tracking-[0.3em] text-white/40">
@@ -263,10 +259,11 @@ function FieldNoteTile({ project, index }: { project: PersonalProject; index: nu
                             {project.links.map((link) => {
                                 const isLive = link.label.toLowerCase() === "live";
                                 const base =
-                                    "group/link inline-flex items-center gap-3 border px-5 py-3 font-jetbrains text-xs uppercase tracking-[0.25em] transition-colors";
+                                    "group/link inline-flex items-center gap-2.5 px-6 py-3 font-jetbrains text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300";
                                 const tone = isLive
-                                    ? "border-green-400/60 text-green-400 hover:border-green-400 hover:bg-green-400/5"
-                                    : "border-white/20 text-white/80 hover:border-white/60 hover:bg-white/5 hover:text-white";
+                                    ? "bg-green-400 text-black hover:bg-green-300 hover:shadow-lg hover:shadow-green-400/25"
+                                    : "border border-white/25 font-normal text-white/80 hover:border-white/60 hover:bg-white/5 hover:text-white";
+
                                 return (
                                     <a
                                         key={link.label}
@@ -275,7 +272,10 @@ function FieldNoteTile({ project, index }: { project: PersonalProject; index: nu
                                         rel="noreferrer noopener"
                                         className={`${base} ${tone}`}
                                     >
-                                        <span>{link.label}</span>
+                                        {!isLive && <GitHubMark />}
+
+                                        <span>{isLive ? "Live Demo" : link.label}</span>
+
                                         <span className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
                                             ↗
                                         </span>
@@ -290,6 +290,14 @@ function FieldNoteTile({ project, index }: { project: PersonalProject; index: nu
     );
 }
 
+function GitHubMark() {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="size-4" aria-hidden="true">
+            <path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56 0-.28-.01-1.02-.02-2-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.33-1.73-1.33-1.73-1.09-.73.08-.72.08-.72 1.2.08 1.83 1.21 1.83 1.21 1.07 1.79 2.81 1.27 3.5.97.11-.76.42-1.27.76-1.56-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.21.96-.26 1.98-.39 3-.4 1.02.01 2.04.14 3 .4 2.28-1.53 3.29-1.21 3.29-1.21.66 1.64.24 2.86.12 3.16.77.83 1.24 1.88 1.24 3.17 0 4.53-2.81 5.53-5.49 5.82.43.36.81 1.09.81 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.68.83.56C20.57 21.91 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z" />
+        </svg>
+    );
+}
+
 function MediaCell({
     media,
     title,
@@ -300,10 +308,10 @@ function MediaCell({
     eager?: boolean;
 }) {
     return (
-        <div className="relative w-full overflow-hidden border border-white/10 bg-black">
+        <div className="mx-auto w-fit overflow-hidden rounded border border-white/15 bg-white/3 p-2 shadow-2xl shadow-black/70">
             {media.type === "video" ? (
                 <video
-                    className="block h-auto w-full"
+                    className="block max-h-[58vh] w-auto max-w-full rounded-xs object-contain"
                     src={media.src}
                     poster={media.poster}
                     autoPlay
@@ -313,7 +321,7 @@ function MediaCell({
                 />
             ) : (
                 <img
-                    className="block h-auto w-full"
+                    className="block max-h-[58vh] w-auto max-w-full rounded-xs object-contain"
                     src={media.src}
                     alt={media.alt ?? title}
                     loading={eager ? "eager" : "lazy"}

@@ -1,0 +1,12 @@
+<svg id="Rag--Streamline-Carbon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <desc>
+    RAG Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <path d="M12 28h-2c-3.8599 0 -7 -3.1401 -7 -7v-2h2v2c0 2.7568 2.2432 5 5 5h2v2Z" stroke-width="1" fill="#000000"></path>
+  <path d="M28 19h-9c-1.104 0.0014 -1.9986 0.896 -2 2v5c0 1.1046 0.8954 2 2 2h3v-2h-3v-5h9v5h-2.5352l-2.5937 3.8906L24.5352 31l2 -3H28c1.1046 0 2 -0.8954 2 -2v-5c-0.0014 -1.104 -0.896 -1.9986 -2 -2Z" stroke-width="1" fill="#000000"></path>
+  <path d="M29 15v-4c0 -3.8599 -3.1401 -7 -7 -7h-3v2h3c2.7568 0 5 2.2432 5 5v4h2Z" stroke-width="1" fill="#000000"></path>
+  <path d="M6 10h3v2H6Z" stroke-width="1" fill="#000000"></path>
+  <path d="M12.606 6.4355 10.0809 2.75C9.6988 2.2734 9.1297 2 8.5194 2H4.0001c-1.1028 0 -2 0.8975 -2 2v10c0 1.1025 0.8972 2 2 2h7c1.1028 0 2 -0.8975 2 -2V7.625c0 -0.4526 -0.1558 -0.8965 -0.394 -1.1895ZM4 14V4h4v3c0 0.5522 0.4478 1 1 1h2v6H4Z" stroke-width="1" fill="#000000"></path>
+  <path id="_Transparent_Rectangle_" d="M0 0h32v32H0Z" stroke-width="1" fill="none"></path>
+</svg>

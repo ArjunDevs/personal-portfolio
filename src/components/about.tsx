@@ -3,15 +3,58 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { observeInView, prefersReducedMotion } from "../lib/motion";
 
+// Eagerly resolve every tech logo to its built URL, keyed by a normalized slug
+// of the filename (e.g. "chain-of-thought.svg" -> "chainofthought").
+const ICON_URLS = import.meta.glob("../assets/logos/tech/*.svg", {
+    eager: true,
+    query: "?url",
+    import: "default",
+}) as Record<string, string>;
+
+const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+const TECH_ICONS: Record<string, string> = Object.fromEntries(
+    Object.entries(ICON_URLS).map(([path, url]) => [
+        slugify(path.split("/").pop()!.replace(".svg", "")),
+        url,
+    ]),
+);
+
+// Stack labels whose slug doesn't match their filename slug.
+const ICON_ALIASES: Record<string, string> = {
+    rest: "restapi",
+    cicd: "githubactions",
+};
+
+// Logos that are black / near-black and would vanish on the dark background.
+// These get flipped to white; everything else keeps its brand color.
+const DARK_ICONS = new Set([
+    "nextjs",
+    "express",
+    "flask",
+    "rag",
+    "chainofthought",
+    "langchain",
+    "langgraph",
+]);
+
+function resolveIcon(label: string): { url: string; dark: boolean } | null {
+    const slug = slugify(label);
+    const key = ICON_ALIASES[slug] ?? slug;
+    const url = TECH_ICONS[key];
+    return url ? { url, dark: DARK_ICONS.has(key) } : null;
+}
+
 const SEGMENTS: { text: string; italic: boolean }[] = [
     { text: "Hi, I'm", italic: false },
     { text: "Arjun", italic: true },
     { text: "- a software engineer who builds software that", italic: false },
     { text: "doesn't suck to use.", italic: true },
-    { text: "Half engineer, half designer,", italic: true },
-    { text: "full-time believer that", italic: false },
+    { text: "I obsess over the", italic: false },
+    { text: "details", italic: true },
+    { text: "most people skip, a full-time believer that", italic: false },
     { text: "small details", italic: true },
-    { text: "are what separate good products from forgettable ones.", italic: false },
+    { text: "are what separate good products from unforgettable ones.", italic: false },
 ];
 
 const WORDS = SEGMENTS.flatMap(({ text, italic }) =>
@@ -21,23 +64,23 @@ const WORDS = SEGMENTS.flatMap(({ text, italic }) =>
 const CRAFT_PILLARS = [
     {
         n: "01",
-        title: "Problem solving",
-        gloss: "Untangling the messy middle. Finding the real question before answering it.",
+        title: "Problem Solving",
+        gloss: "I start by killing the wrong problem. Most of the work is figuring out what's actually breaking, and for whom, before a line gets written. The best fix is often the one you delete instead of build.",
     },
     {
         n: "02",
-        title: "System design",
-        gloss: "Async orchestration, streaming, distributed state. Architecture that survives scale.",
+        title: "System Design",
+        gloss: "I build backends that hold up at 3am, not just in the demo. Async orchestration, streaming pipelines, state that stays sane under load. I design for the failure path first and the happy path second.",
     },
     {
         n: "03",
-        title: "AI orchestration",
-        gloss: "Multi-agent graphs, RAG, agentic reasoning. Making LLMs behave in production.",
+        title: "Product Thinking",
+        gloss: "I build for the person on the other end, not the spec. Asking why before how, cutting features that don't earn their place, and sweating the flow most engineers leave to chance.",
     },
     {
         n: "04",
-        title: "Interface craft",
-        gloss: "React, Next.js, motion. The reason this site looks the way it does.",
+        title: "Interface Craft",
+        gloss: "I obsess over the things you feel but never notice. The timing of a transition, the weight of a font, the half pixel that's off. This whole site is the receipt: every hover, scroll and stagger was a decision.",
     },
 ];
 
@@ -110,7 +153,7 @@ const STACK_ROWS: StackRow[] = [
         label: "FRONTEND",
         items: ["React", "Next.js", "TailwindCSS", "GSAP", "Lenis", "TypeScript"],
         direction: "right",
-        font: "font-supreme italic",
+        font: "font-supreme",
         duration: 40,
     },
 ];
@@ -168,7 +211,7 @@ function Manifesto() {
     return (
         <div ref={ref} className="flex min-h-screen w-full flex-col">
             <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-8 pt-24 pb-12">
-                <p className="font-supreme text-3xl font-semibold leading-tight md:text-4xl">
+                <p className="font-supreme text-3xl font-medium leading-tight md:text-4xl">
                     {WORDS.map((word, i) => (
                         <span key={i}>
                             <span
@@ -237,7 +280,7 @@ function Craft() {
                     <h2 className="mb-4 font-supreme text-5xl font-bold leading-none md:text-6xl">
                         The <em className="font-instrument font-normal italic">craft</em>.
                     </h2>
-                    <p className="font-supreme text-lg italic text-white/50 md:text-xl">
+                    <p className="font-supreme text-lg text-white/50 md:text-xl">
                         Four things I obsess over. The instincts that shape every line of code I ship.
                     </p>
                 </div>
@@ -246,7 +289,7 @@ function Craft() {
                         <div
                             key={pillar.n}
                             data-craft-row
-                            className="group grid grid-cols-[auto_1fr] items-baseline gap-x-5 gap-y-2 py-5 md:grid-cols-[48px_260px_1fr] md:gap-x-10"
+                            className="group grid grid-cols-[auto_1fr] items-baseline gap-x-5 gap-y-2 py-5 md:grid-cols-[48px_220px_1fr] md:gap-x-8"
                         >
                             <div className="self-start pt-2 font-jetbrains text-xs text-white/40">
                                 [{pillar.n}]
@@ -254,7 +297,7 @@ function Craft() {
                             <div className="font-supreme text-2xl font-bold transition-colors duration-500 group-hover:text-white md:text-3xl">
                                 {pillar.title}
                             </div>
-                            <div className="col-span-2 max-w-xl font-supreme text-base italic text-white/50 transition-colors duration-500 group-hover:text-white/85 md:col-span-1 md:text-lg">
+                            <div className="col-span-2 max-w-3xl font-supreme text-base text-white/50 transition-colors duration-500 group-hover:text-white/85 md:col-span-1 md:text-lg">
                                 {pillar.gloss}
                             </div>
                         </div>
@@ -355,7 +398,7 @@ function Stack() {
                     <h2 className="mb-4 font-supreme text-5xl font-bold leading-none md:text-6xl">
                         The <em className="font-instrument font-normal italic">stack</em>.
                     </h2>
-                    <p className="font-supreme text-lg italic text-white/50 md:text-xl">
+                    <p className="font-supreme text-lg text-white/50 md:text-xl">
                         Tools I reach for instinctively. Each one earned through shipping, breaking and debugging code.
                     </p>
                 </div>
@@ -378,15 +421,30 @@ function Stack() {
                                     className={`flex w-max ${row.font} text-xl text-white/80 md:text-2xl`}
                                 >
                                     {Array.from({ length: 3 }).flatMap((_, dupIdx) =>
-                                        row.items.map((item, j) => (
-                                            <span
-                                                key={`${dupIdx}-${j}`}
-                                                className="inline-flex items-center"
-                                            >
-                                                <span className="px-6">{item}</span>
-                                                <span className="text-white/20">·</span>
-                                            </span>
-                                        )),
+                                        row.items.map((item, j) => {
+                                            const icon = resolveIcon(item);
+                                            return (
+                                                <span
+                                                    key={`${dupIdx}-${j}`}
+                                                    className="inline-flex items-center"
+                                                >
+                                                    <span className="inline-flex items-center gap-2.5 px-6">
+                                                        {icon && (
+                                                            <img
+                                                                src={icon.url}
+                                                                alt=""
+                                                                aria-hidden="true"
+                                                                className={`h-[1em] w-[1em] shrink-0 object-contain ${
+                                                                    icon.dark ? "brightness-0 invert" : ""
+                                                                }`}
+                                                            />
+                                                        )}
+                                                        {item}
+                                                    </span>
+                                                    <span className="text-white/20">·</span>
+                                                </span>
+                                            );
+                                        }),
                                     )}
                                 </div>
                             </div>

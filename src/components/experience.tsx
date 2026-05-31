@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "../lib/motion";
 import { useHeaderReveal, useTileReveal } from "../lib/reveal";
-import { Meta, RichText, Stamp } from "./dossier";
+import { RichText, Stamp } from "./dossier";
 
 type Award = { title: string; subtitle: string };
 type Metric = { value: string; label: string };
@@ -39,10 +39,10 @@ const EXPERIENCES: ExperienceEntry[] = [
         mission:
             "Architecting __production-grade__ AI platforms - multi-agent orchestration, streaming inference, and __async pipelines__ that hold up under __real enterprise load__.",
         metrics: [
-            { value: "60% → 90%", label: "DAX Query Accuracy" },
-            { value: "SQL → DAX", label: "Platform Migration" },
-            { value: "Sync → Async", label: "Architecture" },
-            { value: "REST → Streaming", label: "API" },
+            { value: "60% → 90%", label: "DAX query accuracy" },
+            { value: "Multi-agent", label: "LangGraph orchestration" },
+            { value: "RAG", label: "Semantic schema retrieval" },
+            { value: "Streaming", label: "Async LLM inference" },
         ],
         bullets: [
             "Migrated the natural language query platform from SQL to DAX, enabling complex multidimensional analytical queries on enterprise datasets.",
@@ -67,10 +67,10 @@ const EXPERIENCES: ExperienceEntry[] = [
         mission:
             "Built and shipped enterprise NLQ __from scratch__ - Text-to-SQL, validation pipelines, and a platform that scaled from __prototype__ to {{30,000+}} users across the company.",
         metrics: [
-            { value: "100+", label: "Finance Users" },
-            { value: "95%", label: "Query Accuracy" },
-            { value: "30K+", label: "Navi Data Users" },
-            { value: "2", label: "Internal Awards" },
+            { value: "30,000+", label: "Platform users reached" },
+            { value: "95%", label: "Text-to-SQL accuracy" },
+            { value: "100+", label: "Finance users served" },
+            { value: "2", label: "Internal awards won" },
         ],
         bullets: [
             "Solely designed and built an internal Text-to-SQL platform from scratch, serving {{100+}} finance users at {{95%}} query accuracy via iterative validation and business rule enforcement pipelines.",
@@ -98,7 +98,7 @@ export function Experience() {
             id="experience"
             className="relative w-full bg-black text-white"
         >
-            <div className="mx-auto flex w-full max-w-6xl flex-col px-8 pt-28 pb-10 md:pt-32 md:pb-12 lg:pt-40">
+            <div className="mx-auto flex w-full max-w-6xl flex-col px-8 pt-24 pb-8 md:pt-28 md:pb-10">
                 <div ref={headerRef} className="max-w-2xl">
                     <h2
                         data-anim
@@ -110,7 +110,7 @@ export function Experience() {
                         data-anim
                         className="font-supreme text-lg text-white/60 md:text-xl"
                     >
-                        Two roles. <em className="font-instrument font-normal italic text-white/85">3.9 years</em> of building backend systems and AI platforms that hold up <em className="font-instrument font-normal italic text-white/85">in production</em>.
+                        Two roles. <em className="font-instrument font-normal text-white/85">3.9 years</em> of building backend systems and AI platforms that hold up <em className="font-instrument font-normal italic text-white/85">in production</em>.
                     </p>
                 </div>
             </div>
@@ -182,17 +182,7 @@ function DossierTile({ exp, index }: { exp: ExperienceEntry; index: number }) {
                 </span>
             </div>
 
-            <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-8 py-16 md:gap-16 md:py-20 lg:gap-20 lg:py-24">
-                <div
-                    data-tile-block
-                    className="grid grid-cols-2 items-start gap-y-3 font-jetbrains text-[10px] uppercase tracking-[0.25em] text-white/50 md:grid-cols-4"
-                >
-                    <Meta label="File" value={exp.fileNo} />
-                    <Meta label="Tenure" value={exp.duration} />
-                    <Meta label="Location" value={exp.location} />
-                    <Meta label="Timecode" value={exp.yearRange} />
-                </div>
-
+            <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-8 py-12 md:gap-10 md:py-16">
                 <div
                     data-tile-block
                     className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
@@ -205,7 +195,7 @@ function DossierTile({ exp, index }: { exp: ExperienceEntry; index: number }) {
                             <div className="font-supreme text-3xl font-bold leading-none md:text-5xl">
                                 {exp.company}
                             </div>
-                            <div className="font-supreme text-xl italic text-white/60 md:text-2xl">
+                            <div className="font-supreme text-xl text-white/60 md:text-2xl">
                                 {exp.role}
                             </div>
                         </div>
