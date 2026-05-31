@@ -1,47 +1,9 @@
+
 <div align="center">
 
-<style>
-  @keyframes slideInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.7;
-    }
-  }
-  
-  .name-header {
-    animation: slideInDown 0.8s ease-out;
-    font-size: 2.5em;
-    font-weight: bold;
-    margin: 20px 0 10px 0;
-  }
-  
-  .role {
-    animation: pulse 2s ease-in-out infinite;
-    color: #666;
-    font-size: 1.2em;
-  }
-</style>
-
-<div class="name-header">Arjun Tandon</div>
-
-<div class="role">• Software Engineer •</div>
+![Banner](./public/readme_banner.png)
 
 Building products, solving problems, and continuously learning along the way.
-
-<br>
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-arjuntandon.me-blue?style=for-the-badge&logo=globe&logoColor=white)](https://arjuntandon.me)
 [![GitHub](https://img.shields.io/badge/GitHub-ArjunDevs-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ArjunDevs)
