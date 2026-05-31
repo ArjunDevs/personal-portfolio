@@ -296,8 +296,8 @@ function DossierTile({ exp, index }: { exp: ExperienceEntry; index: number }) {
 function AwardSeal({ award }: { award: Award }) {
     return (
         <div className="group/seal relative overflow-hidden border border-white/15 bg-white/2 p-5 transition-colors hover:bg-white/4">
-            <div className="pointer-events-none absolute -right-6 -top-6 size-24 rounded-full border border-amber-400/30 transition-transform duration-700 group-hover/seal:scale-110" />
-            <div className="pointer-events-none absolute -right-3 -top-3 size-14 rounded-full border border-amber-400/40" />
+            <div className="absolute -right-6 -top-6 size-24 rounded-full border-2 border-amber-400/30 transition-transform duration-700 group-hover/seal:scale-110" />
+            <div className="absolute -right-3 -top-3 size-14 rounded-full border-2 border-amber-400/40" />
             <div className="relative flex flex-col gap-1">
                 <div className="font-jetbrains text-[10px] uppercase tracking-[0.3em] text-amber-400/70">
                     ★ Award

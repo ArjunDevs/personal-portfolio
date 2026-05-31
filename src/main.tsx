@@ -7,8 +7,9 @@ import App from './App.tsx'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger, MorphSVGPlugin);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

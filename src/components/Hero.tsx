@@ -190,10 +190,10 @@ export function Hero() {
                     <span className="font-jetbrains">ARJUN TANDON</span>
                 </div>
                 <nav className="flex gap-8">
-                    <a href="#about" data-header-item><span className="text-white/40 font-jetbrains">01 · </span>ABOUT</a>
-                    <a href="#experience" data-header-item><span className="text-white/40 font-jetbrains">02 · </span>EXPERIENCE</a>
-                    <a href="#projects" data-header-item><span className="text-white/40 font-jetbrains">03 · </span>PROJECTS</a>
-                    <a href="#contact" data-header-item><span className="text-white/40 font-jetbrains">04 · </span>CONTACT</a>
+                    <a data-ctype="nav" href="#about" data-header-item><span className="text-white/40 font-jetbrains pointer-events-none">01 · </span>ABOUT</a>
+                    <a data-ctype="nav" href="#experience" data-header-item><span className="text-white/40 font-jetbrains pointer-events-none">02 · </span>EXPERIENCE</a>
+                    <a data-ctype="nav" href="#projects" data-header-item><span className="text-white/40 font-jetbrains pointer-events-none">03 · </span>PROJECTS</a>
+                    <a data-ctype="nav" href="#contact" data-header-item><span className="text-white/40 font-jetbrains pointer-events-none">04 · </span>CONTACT</a>
                 </nav>
             </header>
 
@@ -208,30 +208,35 @@ export function Hero() {
                     <div className="font-supreme font-bold text-base">Bangalore, Karnataka, IN</div>
                     <div className="text-sm text-white/50 font-supreme">{coordinateLabel}</div>
                 </div>
-                <a href="mailto:arjuntandonprofessional@gmail.com" className="group block" data-meta-item>
-                    <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">Status</div>
-                    <div className="flex items-center gap-2 font-supreme font-bold text-base transition-colors group-hover:text-white/70">
-                        <span className="relative inline-flex size-1.5">
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-                            <span className="relative inline-flex size-1.5 rounded-full bg-green-500" />
-                        </span>
-                        Open to Roles
-                        <span className={`inline-block ${arrowEase} group-hover:translate-x-1`}>→</span>
-                    </div>
-                    <div className="text-sm text-white/50 font-supreme">Full-time · Pan-India · Remote</div>
+                <a data-ctype="email" href="mailto:arjuntandonprofessional@gmail.com" className="group block" data-meta-item>
+                    <div className="pointer-events-none">
+                        <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">Status</div>
+                        <div className="flex items-center gap-2 font-supreme font-bold text-base transition-colors group-hover:text-white/70">
+                            <span className="relative inline-flex size-1.5">
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+                                <span className="relative inline-flex size-1.5 rounded-full bg-green-500" />
+                            </span>
+                            Open to Roles
+                            <span className={`inline-block ${arrowEase} group-hover:translate-x-1`}>→</span>
+                        </div>
+                        <div className="text-sm text-white/50 font-supreme">Full-time · Pan-India · Remote</div>
+                    </div>  
                 </a>
                 <a
                     href="/resume/ArjunTandon_Backend.pdf"
                     download
                     className="group block"
                     data-meta-item
+                    data-ctype="download"
                 >
-                    <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">Resume</div>
-                    <div className="flex items-center gap-1.5 font-supreme font-bold text-base transition-colors group-hover:text-white/70">
-                        Click To Download PDF
-                        <span className={`inline-block ${arrowEase} group-hover:translate-y-1`}>↓</span>
+                    <div className="pointer-events-none">
+                        <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">Resume</div>
+                        <div className="flex items-center gap-1.5 font-supreme font-bold text-base transition-colors group-hover:text-white/70">
+                            Click To Download PDF
+                            <span className={`inline-block ${arrowEase} group-hover:translate-y-1`}>↓</span>
+                        </div>
+                        <div className="text-sm text-white/50 font-supreme">Updated May 2026</div>
                     </div>
-                    <div className="text-sm text-white/50 font-supreme">Updated May 2026</div>
                 </a>
                 <div className="text-right min-w-44" data-meta-item>
                     <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">Local Time</div>

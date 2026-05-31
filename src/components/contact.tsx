@@ -115,20 +115,24 @@ export function Contact() {
 
                 <div>
                     <a
+                        data-ctype="email"
                         href={`mailto:${EMAIL}`}
                         data-anim
                         className="group mt-8 block w-fit"
                         aria-label={`Email ${EMAIL}`}
                     >
-                        <div className="flex items-end gap-4">
-                            <span className="font-supreme text-6xl font-black leading-[0.9] text-white md:text-8xl">
-                                Write me an Email !
+                        <div className="pointer-events-none">
+                            <div className="flex items-end gap-4">
+                                <span className="font-supreme text-6xl font-black leading-[0.9] text-white md:text-8xl">
+                                    Write me an Email !
+                                </span>
+                            </div>
+                            <span className="mt-2 block h-px w-0 bg-linear-to-r from-[#A855F7] to-[#06B6D4] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                            <span className="mt-3 block w-fit font-supreme text-xl font-bold text-white/70 transition-colors duration-500 group-hover:text-white md:text-2xl">
+                                {EMAIL}
                             </span>
                         </div>
-                        <span className="mt-2 block h-px w-0 bg-linear-to-r from-[#A855F7] to-[#06B6D4] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
-                        <span className="mt-3 block w-fit font-supreme text-xl font-bold text-white/70 transition-colors duration-500 group-hover:text-white md:text-2xl">
-                            {EMAIL}
-                        </span>
+                        
                     </a>
 
                     <div

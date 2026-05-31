@@ -8,6 +8,7 @@ import { About } from "./components/about";
 import { Experience } from "./components/experience";
 import { PersonalProjects } from "./components/projects";
 import { Contact } from "./components/contact";
+import CustomCursor from "./components/custom-cursor";
 
 function App() {
   const lenisRef = useRef<LenisRef>(null);
@@ -63,11 +64,11 @@ function App() {
       ref={lenisRef}
     >
       <div className="w-screen">
+        <CustomCursor />
         <Hero />
         <About />
         <Experience />
         <PersonalProjects />
-        <div className="p-20 bg-black"/>
         <Contact />
       </div>
       {loading && <Loader onComplete={handleLoaderComplete} />}

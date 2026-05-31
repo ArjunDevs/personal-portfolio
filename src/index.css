@@ -215,6 +215,10 @@
   50% { opacity: 0.15; }
 }
 
+* {
+  cursor: none !important;
+}
+
 html {
   scrollbar-width: none;
 }
