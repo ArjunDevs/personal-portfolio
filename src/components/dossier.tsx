@@ -52,7 +52,7 @@ export function Stamp({
     borderInner: string;
 }) {
     return (
-        <div className={`shrink-0 -rotate-6 border-2 ${border} p-1`}>
+        <div className={`w-fit shrink-0 -rotate-6 border-2 ${border} p-1`}>
             <div className={`border ${borderInner} px-4 py-2 md:px-5 md:py-2.5`}>
                 <span className={`font-jetbrains text-xs font-bold uppercase tracking-[0.3em] ${accent} md:text-sm`}>
                     {label}

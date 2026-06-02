@@ -63,7 +63,7 @@ function App() {
       }}
       ref={lenisRef}
     >
-      <div className="w-screen">
+      <div className="w-full overflow-x-hidden">
         <CustomCursor />
         <Hero />
         <About />

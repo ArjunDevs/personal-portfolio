@@ -165,7 +165,7 @@ export function Hero() {
         <section
             id="hero"
             ref={heroRef}
-            className="relative flex h-screen w-full flex-col bg-black text-white font-jetbrains overflow-hidden"
+            className="relative flex min-h-screen w-full flex-col bg-black text-white font-jetbrains overflow-hidden md:h-screen"
         >
             <div
                 ref={raysRef}
@@ -184,12 +184,12 @@ export function Hero() {
                 />
             </div>
 
-            <header className="relative z-10 flex items-center justify-between px-8 pt-5 pb-4 text-xs tracking-wide">
+            <header className="relative z-10 flex items-center justify-between px-6 pt-5 pb-4 text-xs tracking-wide md:px-8">
                 <div className="flex items-center gap-2" data-header-item>
                     <span ref={starRef} className="text-white/50 inline-block">✱</span>
                     <span className="font-jetbrains">ARJUN TANDON</span>
                 </div>
-                <nav className="flex gap-8">
+                <nav className="hidden gap-8 md:flex">
                     <a data-ctype="nav" href="#about" data-header-item><span className="text-white/40 font-jetbrains pointer-events-none">01 · </span>ABOUT</a>
                     <a data-ctype="nav" href="#experience" data-header-item><span className="text-white/40 font-jetbrains pointer-events-none">02 · </span>EXPERIENCE</a>
                     <a data-ctype="nav" href="#projects" data-header-item><span className="text-white/40 font-jetbrains pointer-events-none">03 · </span>PROJECTS</a>
@@ -197,13 +197,13 @@ export function Hero() {
                 </nav>
             </header>
 
-            <div className="relative z-10 flex flex-row justify-between items-center gap-6 px-8 pt-5 leading-relaxed text-sm">
+            <div className="relative z-10 grid grid-cols-2 gap-x-6 gap-y-8 px-6 pt-6 leading-relaxed text-sm lg:flex lg:flex-row lg:justify-between lg:items-center lg:gap-6 lg:px-8 lg:pt-5">
                 <div data-meta-item>
                     <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">The Role</div>
                     <div className="font-supreme font-bold text-base">Software Engineer</div>
                     <div className="text-sm text-white/50 font-supreme">Backend · Full Stack · Generative AI</div>
                 </div>
-                <div data-meta-item>
+                <div className="hidden md:block" data-meta-item>
                     <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">Based In</div>
                     <div className="font-supreme font-bold text-base">Bangalore, Karnataka, IN</div>
                     <div className="text-sm text-white/50 font-supreme">{coordinateLabel}</div>
@@ -238,7 +238,7 @@ export function Hero() {
                         <div className="text-sm text-white/50 font-supreme">Updated May 2026</div>
                     </div>
                 </a>
-                <div className="text-right min-w-44" data-meta-item>
+                <div className="hidden text-left min-w-0 md:block lg:text-right lg:min-w-44" data-meta-item>
                     <div className="mb-2 text-xs text-white/40 uppercase tracking-wider font-jetbrains">Local Time</div>
                     <div className="font-supreme font-bold text-base">
                         {(() => {
@@ -256,8 +256,8 @@ export function Hero() {
                 </div>
             </div>
 
-            <div className="relative z-10 mt-auto flex items-end justify-between gap-8 px-8 pb-4">
-                <p ref={taglineRef} className="max-w-lg text-2xl leading-relaxed font-supreme">
+            <div className="relative z-10 mt-auto flex items-end justify-between gap-6 px-6 pb-6 md:gap-8 md:px-8 md:pb-4">
+                <p ref={taglineRef} className="max-w-lg text-xl leading-relaxed font-supreme md:text-2xl">
                     I ship <em className="font-instrument">thoughtfully crafted</em> products - frontends, backends, and infrastructure that feel effortless.
                 </p>
                 <div ref={indexRef} className="text-right text-xs text-white/50 tracking-wider font-jetbrains">
@@ -271,7 +271,7 @@ export function Hero() {
                 viewBox="0 0 466 92"
                 fill="white"
                 xmlns="http://www.w3.org/2000/svg"
-                className="relative z-10 overflow-hidden"
+                className="relative z-10 w-full overflow-hidden"
             >
                 <path d="M465.613 90.3681H438.605L433.741 25.0881H433.229L434.637 53.8881L436.045 90.3681H418.765V0.768066H445.773L450.765 66.0481H451.277L449.741 37.2481L448.333 0.768066H465.613V90.3681Z" />
                 <path d="M380.39 17.92C380.39 12.544 382.097 8.23467 385.51 4.992C388.923 1.664 393.446 0 399.078 0C404.71 0 409.19 1.62133 412.518 4.864C415.846 8.10666 417.51 12.4587 417.51 17.92V73.216C417.51 78.6773 415.846 83.0293 412.518 86.272C409.19 89.5147 404.71 91.136 399.078 91.136C393.446 91.136 388.923 89.5147 385.51 86.272C382.097 82.944 380.39 78.592 380.39 73.216V17.92ZM398.95 74.496C399.377 74.496 399.59 74.112 399.59 73.344V17.792C399.59 17.024 399.377 16.64 398.95 16.64C398.523 16.64 398.31 17.024 398.31 17.792V73.344C398.31 74.112 398.523 74.496 398.95 74.496Z" />

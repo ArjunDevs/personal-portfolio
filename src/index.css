@@ -215,12 +215,15 @@
   50% { opacity: 0.15; }
 }
 
-* {
-  cursor: none !important;
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
 html {
   scrollbar-width: none;
+  -webkit-text-size-adjust: 100%;
 }
 html::-webkit-scrollbar {
   display: none;

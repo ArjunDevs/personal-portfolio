@@ -210,8 +210,8 @@ function Manifesto() {
 
     return (
         <div ref={ref} className="flex min-h-screen w-full flex-col">
-            <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-8 pt-24 pb-12">
-                <p className="font-supreme text-3xl font-medium leading-tight md:text-4xl">
+            <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-6 pt-24 pb-12 md:px-8">
+                <p className="font-supreme text-2xl font-medium leading-tight sm:text-3xl md:text-4xl">
                     {WORDS.map((word, i) => (
                         <span key={i}>
                             <span
@@ -275,9 +275,9 @@ function Craft() {
 
     return (
         <div ref={ref} className="flex w-full flex-col">
-            <div className="mx-auto flex w-full max-w-6xl flex-col px-8 py-16 md:py-20 lg:py-24">
+            <div className="mx-auto flex w-full max-w-6xl flex-col px-6 py-16 md:px-8 md:py-20 lg:py-24">
                 <div data-craft-header className="mb-10 max-w-2xl md:mb-12">
-                    <h2 className="mb-4 font-supreme text-5xl font-bold leading-none md:text-6xl">
+                    <h2 className="mb-4 font-supreme text-4xl font-bold leading-none sm:text-5xl md:text-6xl">
                         The <em className="font-instrument font-normal italic">craft</em>.
                     </h2>
                     <p className="font-supreme text-lg text-white/50 md:text-xl">
@@ -393,9 +393,9 @@ function Stack() {
 
     return (
         <div ref={ref} className="flex w-full flex-col">
-            <div className="mx-auto flex w-full max-w-6xl flex-col px-8 py-16 md:py-20 lg:py-24">
+            <div className="mx-auto flex w-full max-w-6xl flex-col px-6 py-16 md:px-8 md:py-20 lg:py-24">
                 <div data-stack-header className="mb-10 max-w-2xl md:mb-12">
-                    <h2 className="mb-4 font-supreme text-5xl font-bold leading-none md:text-6xl">
+                    <h2 className="mb-4 font-supreme text-4xl font-bold leading-none sm:text-5xl md:text-6xl">
                         The <em className="font-instrument font-normal italic">stack</em>.
                     </h2>
                     <p className="font-supreme text-lg text-white/50 md:text-xl">
@@ -408,9 +408,9 @@ function Stack() {
                         <div
                             key={row.label}
                             data-marquee-row
-                            className="flex items-center gap-8 border-t border-white/10 py-5 last:border-b"
+                            className="flex items-center gap-4 border-t border-white/10 py-5 last:border-b md:gap-8"
                         >
-                            <div className="w-32 shrink-0 font-jetbrains text-xs uppercase tracking-widest text-white/40 md:w-40">
+                            <div className="w-24 shrink-0 font-jetbrains text-xs uppercase tracking-widest text-white/40 md:w-40">
                                 {row.label}
                             </div>
                             <div className="flex-1 overflow-hidden">

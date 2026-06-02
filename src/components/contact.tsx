@@ -93,9 +93,9 @@ export function Contact() {
         <section
             id="contact"
             ref={sectionRef}
-            className="relative h-screen w-full overflow-hidden bg-black text-white flex flex-col"
+            className="relative min-h-screen w-full overflow-hidden bg-black text-white flex flex-col"
         >
-            <div className="flex-1 justify-between mx-auto flex w-full flex-col px-8 pt-8 pb-8">
+            <div className="flex-1 justify-between mx-auto flex w-full flex-col px-6 pt-8 pb-8 md:px-8">
                 <div
                     data-anim
                     className="mb-6 font-jetbrains text-[10px] uppercase tracking-[0.3em] text-white/40"
@@ -104,10 +104,10 @@ export function Contact() {
                 </div>
                 
                 <div>
-                    <p data-anim className="font-supreme text-3xl text-white/40 md:text-4xl">
+                    <p data-anim className="font-supreme text-2xl text-white/40 sm:text-3xl md:text-4xl">
                         Have a problem to solve?
                     </p>
-                    <p data-anim className="font-supreme text-3xl text-white md:text-4xl">
+                    <p data-anim className="font-supreme text-2xl text-white sm:text-3xl md:text-4xl">
                         Let's <em className="font-instrument font-normal italic">engineer</em> a solution together.
                     </p>
                 </div>
@@ -123,7 +123,7 @@ export function Contact() {
                     >
                         <div className="pointer-events-none">
                             <div className="flex items-end gap-4">
-                                <span className="font-supreme text-6xl font-black leading-[0.9] text-white md:text-8xl">
+                                <span className="font-supreme text-4xl font-black leading-[0.9] text-white sm:text-6xl md:text-8xl">
                                     Write me an Email !
                                 </span>
                             </div>
@@ -184,7 +184,7 @@ export function Contact() {
 
             <div
                 data-anim
-                className="mx-auto flex w-full flex-col gap-4 px-8 pb-5 font-jetbrains text-[10px] uppercase tracking-[0.25em] text-white/40 md:flex-row md:items-center md:justify-between"
+                className="mx-auto flex w-full flex-col gap-4 px-6 pb-5 font-jetbrains text-[10px] uppercase tracking-[0.25em] text-white/40 md:flex-row md:items-center md:justify-between md:px-8"
             >
                 <span>© MMXXVI · Arjun Tandon</span>
                 <span className="text-white/30">

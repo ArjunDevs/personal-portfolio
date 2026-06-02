@@ -98,11 +98,11 @@ export function Experience() {
             id="experience"
             className="relative w-full bg-black text-white"
         >
-            <div className="mx-auto flex w-full max-w-6xl flex-col px-8 pt-24 pb-8 md:pt-28 md:pb-10">
+            <div className="mx-auto flex w-full max-w-6xl flex-col px-6 pt-24 pb-8 md:px-8 md:pt-28 md:pb-10">
                 <div ref={headerRef} className="max-w-2xl">
                     <h2
                         data-anim
-                        className="mb-4 font-supreme text-5xl font-bold leading-none md:text-6xl"
+                        className="mb-4 font-supreme text-4xl font-bold leading-none sm:text-5xl md:text-6xl"
                     >
                         My <em className="font-instrument font-normal italic">experience</em>.
                     </h2>
@@ -177,12 +177,12 @@ function DossierTile({ exp, index }: { exp: ExperienceEntry; index: number }) {
                 aria-hidden="true"
                 style={{ transform: "translate3d(0,0,0)" }}
             >
-                <span className="select-none font-supreme text-[14rem] font-bold leading-none text-white/[0.035] md:text-[22rem]">
+                <span className="select-none font-supreme text-[8rem] font-bold leading-none text-white/[0.035] sm:text-[14rem] md:text-[22rem]">
                     {exp.yearBg}
                 </span>
             </div>
 
-            <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-8 py-12 md:gap-10 md:py-16">
+            <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-12 md:gap-10 md:px-8 md:py-16">
                 <div
                     data-tile-block
                     className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between"

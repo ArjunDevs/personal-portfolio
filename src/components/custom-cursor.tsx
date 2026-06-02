@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 import shotShare     from "../assets/projects/synclabs/Screenshot 2026-05-24 235317.png";
@@ -8,7 +8,18 @@ export default function CustomCursor() {
   const labelRef = useRef<HTMLSpanElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
+  // Only run the cursor on genuine mouse devices. Require BOTH hover and a fine
+  // pointer: phones/tablets report `hover: none` (and a tap synthesizes a
+  // mouse event, which would otherwise make the dot pop in where you tapped).
+  const [enabled] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+  );
+
   useEffect(() => {
+    if (!enabled) return;
+
     gsap.set(dotRef.current, { xPercent: -50, yPercent: -50 });
 
     const move = (e: MouseEvent): void => {
@@ -87,7 +98,9 @@ export default function CustomCursor() {
       window.removeEventListener("mouseover", expand);
       window.removeEventListener("mouseout", shrink);
     };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <div
